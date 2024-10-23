@@ -1,0 +1,1 @@
+간단한 next js 기능 학습 (with mongodb)
