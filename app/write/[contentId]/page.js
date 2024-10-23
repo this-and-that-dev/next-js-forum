@@ -11,7 +11,7 @@ export default async function modify(props) {
                 <input type={'hidden'} name={'_id'} defaultValue={props.params.contentId} />
                 <input type={'text'} name={'title'} placeholder={"글제목 입력하세요"} defaultValue={result.title}></input>
                 <input type={'text'} name={'content'} placeholder={"내용을 입력하세요"} defaultValue={result.content}></input>
-                <button type="submit">버튼</button>
+                <button type="submit">수정하기</button>
             </form>
         </div>
     )
