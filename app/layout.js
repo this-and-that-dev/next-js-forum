@@ -25,6 +25,7 @@ export default function RootLayout({children}) {
             <div className="navbar">
                 <Link href="/" className="logo">Appleforum</Link>
                 <Link href="/list">List</Link>
+                <Link href="/write">write</Link>
             </div>
         {children}
         </body>
