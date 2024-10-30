@@ -1,16 +1,32 @@
 import {connectDB} from "@/util/database";
+import {getServerSession} from "next-auth";
+import {authOptions} from "@/pages/api/auth/[...nextauth]";
 
 export default async function write(request, response) {
     if (request.method === "POST") {
         const title = request.body.title;
         const content = request.body.content;
         const db = (await connectDB).db("forum");
+
+        let session = await getServerSession(request, response, authOptions);
+        console.log(session.user.email);
+        let requestBody ;
+        if (session) {
+            requestBody = {
+                title: title,
+                content: content,
+                regId : session.user.email
+            }
+        } else {
+            requestBody = {
+                title: title,
+                content: content
+            }
+        }
+
         if (title && content) {
             try {
-                let result = await db.collection('post').insertOne(
-                    {
-                        title: title, content: content
-                    });
+                let result = await db.collection('post').insertOne(requestBody);
             } catch (error) {
                 response.status(500).json("에러가 발생했음");
             }
