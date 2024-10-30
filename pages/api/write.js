@@ -9,7 +9,7 @@ export default async function write(request, response) {
         const db = (await connectDB).db("forum");
 
         let session = await getServerSession(request, response, authOptions);
-        console.log(session.user.email);
+
         let requestBody ;
         if (session) {
             requestBody = {
