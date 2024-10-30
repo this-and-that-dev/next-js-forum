@@ -1,4 +1,3 @@
-
 import ListItem from "@/app/list/ListItem";
 import {connectDB} from "@/util/database";
 
@@ -12,10 +11,10 @@ export default async function List() {
         return {
             _id : post._id.toString(),
             title : post.title,
-            content : post.content
+            content : post.content,
+            regId : post.regId
         }
     })
-
     return (
         <div className="list-bg">
             <ListItem result={newResult} />
