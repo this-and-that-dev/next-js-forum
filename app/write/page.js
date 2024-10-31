@@ -1,4 +1,14 @@
-export default function Write() {
+import {getServerSession} from "next-auth";
+import {authOptions} from "@/pages/api/auth/[...nextauth]";
+
+export default async function Write() {
+
+    let session = await getServerSession(authOptions);
+    // console.log(session);
+    if (session === null) {
+        return <div>로그인 하세요~~</div>
+    }
+
     return (
         <div>
             <form action={"/api/write"} method={"post"}>
@@ -8,5 +18,5 @@ export default function Write() {
                 <button type="submit">버튼</button>
             </form>
         </div>
-    )
+    );
 };
