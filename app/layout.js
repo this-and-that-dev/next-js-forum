@@ -33,7 +33,9 @@ export default async function RootLayout({children}) {
                 <Link href="/list">List</Link>
                 <Link href="/write">write</Link>
                 {
-                    session == null ? <LoginBtn/> : <LogoutBtn/>
+                    session == null ?
+                        <> <Link href={"/register"}>회원가입</Link><LoginBtn/> </>
+                        : <LogoutBtn/>
                 }
             </div>
         {children}
