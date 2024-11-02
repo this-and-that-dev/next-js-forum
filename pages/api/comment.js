@@ -1,6 +1,7 @@
 import {getServerSession} from "next-auth";
 import {authOptions} from "@/pages/api/auth/[...nextauth]";
 import {connectDB} from "@/util/database";
+import {ObjectId} from "mongodb";
 
 export default async function handler(request, response) {
     let session = await getServerSession(request, response, authOptions);
@@ -15,9 +16,9 @@ export default async function handler(request, response) {
 
     if (session != null && request.method === "POST") {
         let commentBody = {
-            comment : request.body.comment,
-            contentId : request.body.contentId,
-            regId : session.user.email,
+            comment: request.body.comment,
+            contentId: new ObjectId(request.body.contentId),
+            regId: session.user.email,
         };
 
         try {
