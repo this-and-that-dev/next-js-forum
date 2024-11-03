@@ -17,10 +17,11 @@ export default function Comment({contentId}) {
 
     return (<div>
             <div>댓글 목록 보여줄 부분</div>
+            <hr></hr>
             {
                 comments.length > 0 ?
                     comments.map((comment, index) => {
-                        return <div key={index}>{comment.comment}</div>;
+                        return <p key={index}>{comment.comment}</p>;
                     }) : null
             }
             <input type={"text"} onChange={(e) => {
