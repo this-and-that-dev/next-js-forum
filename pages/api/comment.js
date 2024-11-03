@@ -23,15 +23,12 @@ export default async function handler(request, response) {
             await db.collection('comment').insertOne(commentBody);
             response.status(200).json("성공");
         } catch (e) {
-            console.log(e);
             response.status(500).json("댓글 등록하다 에러남");
         }
     }
     if (request.method === "GET") {
-        console.log(request.query.contentId);
         const db = (await connectDB).db("forum");
         let result = await db.collection('comment').find({contentId: new ObjectId(request.query.contentId)}).toArray();
-        console.log(result)
         response.status(200).json(result);
     }
 }
