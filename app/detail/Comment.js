@@ -30,7 +30,11 @@ export default function Comment({contentId}) {
             <button onClick={() => {
                 axios.post("/api/comment", {comment: comment, contentId: contentId})
                     .then(result => {
-                        console.log(result);
+                        let newComments = [...comments];
+                        newComments.push({
+                            comment : comment
+                        })
+                        setComments(newComments);
                     })
                     .catch(e => {
                         console.log(e);
