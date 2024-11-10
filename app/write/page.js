@@ -1,5 +1,6 @@
 import {getServerSession} from "next-auth";
 import {authOptions} from "@/pages/api/auth/[...nextauth]";
+import WriteImage from "@/app/write/WriteImage";
 
 export default async function Write() {
 
@@ -15,6 +16,7 @@ export default async function Write() {
                 <h4>글작성</h4>
                 <input type={'text'} name={'title'} placeholder={"글제목 입력하세요"}/>
                 <input type={'text'} name={'content'} placeholder={"내용을 입력하세요"}></input>
+                <WriteImage />
                 <button type="submit">버튼</button>
             </form>
         </div>
