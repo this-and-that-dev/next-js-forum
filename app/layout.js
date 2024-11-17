@@ -1,21 +1,12 @@
-import localFont from "next/font/local";
 import "./globals.css";
 import Link from "next/link";
 import LoginBtn from "@/components/LoginBtn";
 import {getServerSession} from "next-auth";
 import {authOptions} from "@/pages/api/auth/[...nextauth]";
 import LogoutBtn from "@/components/LogoutBtn";
+import Darkmode from "@/components/Darkmode";
+import {cookies} from "next/headers";
 
-const geistSans = localFont({
-    src: "./fonts/GeistVF.woff",
-    variable: "--font-geist-sans",
-    weight: "100 900",
-});
-const geistMono = localFont({
-    src: "./fonts/GeistMonoVF.woff",
-    variable: "--font-geist-mono",
-    weight: "100 900",
-});
 
 export const metadata = {
     title: "Create Next App",
@@ -24,10 +15,13 @@ export const metadata = {
 
 export default async function RootLayout({children}) {
 
-    let session  = await getServerSession(authOptions)
+    let session  = await getServerSession(authOptions);
+
+    let res = cookies().get('dark-mode');
+
     return (
         <html lang="en">
-        <body className={`${geistSans.variable} ${geistMono.variable}`}>
+        <body className={ res?.value === 'dark' ? 'dark-mode' : ''}>
             <div className="navbar">
                 <Link href="/" className="logo">Appleforum</Link>
                 <Link href="/list">List</Link>
@@ -37,6 +31,7 @@ export default async function RootLayout({children}) {
                         <> <Link href={"/register"}>회원가입</Link><LoginBtn/> </>
                         : <LogoutBtn/>
                 }
+                <Darkmode darkmode={res.value}/>
             </div>
         {children}
         </body>

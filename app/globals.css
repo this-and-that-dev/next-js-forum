@@ -1,10 +1,12 @@
 body {
     margin: 0;
 }
+
 .list-bg {
     background: rgb(249, 250, 255);
     padding: 10px;
 }
+
 .list-item {
     background: white;
     border-radius: 10px;
@@ -12,25 +14,29 @@ body {
     margin-bottom: 5px;
     box-shadow: rgb(224, 224, 224) 0px 2px 4px 0px;
 }
+
 .list-item h4 {
     font-size: 20px;
     font-weight: 800;
     margin: 0;
 }
+
 .list-item p {
     color: grey;
-    margin : 5px 0px;
+    margin: 5px 0px;
 }
 
 .p-20 {
     padding: 20px;
 }
+
 input {
     box-sizing: border-box;
     padding: 10px;
     display: block;
     margin-bottom: 10px;
 }
+
 button {
     padding: 10px 15px;
     background: lightgray;
@@ -46,11 +52,13 @@ form {
     background: white;
     padding: 20px;
 }
+
 .navbar a {
     margin-right: 10px;
     text-decoration: none;
     color: black;
 }
+
 .logo {
     font-weight: bold;
 }
@@ -58,4 +66,12 @@ form {
 .list-item {
     opacity: 1;
     transition: all 1s;
+}
+
+.dark-mode .navbar {
+    background: #222;
+}
+
+.dark-mode .navbar a {
+    color: white;
 }
