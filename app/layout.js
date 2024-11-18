@@ -31,7 +31,7 @@ export default async function RootLayout({children}) {
                         <> <Link href={"/register"}>회원가입</Link><LoginBtn/> </>
                         : <LogoutBtn/>
                 }
-                <Darkmode darkmode={res.value}/>
+                <Darkmode darkmode={res?.value}/>
             </div>
         {children}
         </body>
